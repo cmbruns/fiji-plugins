@@ -5,6 +5,16 @@ import java.awt.*;
 import ij.plugin.*;
 import ij.plugin.frame.*;
 
+/**
+ * Computes the Pearson correlation coefficient (r) relating the pixel-by-pixel
+ * intensities in two images, optionally ignoring intensities with value zero, for
+ * cases where zero means "no data". This can be useful for determining how similar
+ * two images are. A result value of 1.0 means the images are exactly the same, except
+ * for a linear scale; 0.0 implies no linear correlation, and -1.0 implies the two 
+ * images are negatives of one another.
+ * 
+ * Result is shown in the ImageJ log window.
+ */
 public class Pearson_Correlation implements PlugIn {
     public String pluginName = "Pearson Correlation";
     static boolean ignoreZerosOption = true;
@@ -115,7 +125,6 @@ public class Pearson_Correlation implements PlugIn {
         ignoreZerosOption = gd.getNextBoolean();
         image1 = WindowManager.getImage(wList[gd.getNextChoiceIndex()]);
         image2 = WindowManager.getImage(wList[gd.getNextChoiceIndex()]);
-        // TODO
         return true;
     }
 
